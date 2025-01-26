@@ -8,9 +8,38 @@ This guide explains how to run tests in a Maven-based Cucumber project. You can 
 - Ensure that **Cucumber** and **TestNG** are configured in your project.
 - Ensure that you have the **RunEbayTests.java** and **RunAPITests.java** classes in your project.
 
-## Run eBay Tests
+## to Run only eBay Tests
 
 To run only the eBay tests, use the following Maven command:
 
-```bash or cmd
+##bash or cmd
 mvn test -Dtest.classes=**/RunEbayTests.java -Dtest.tags="--tags @eBay"
+
+##################################################################################
+
+## Run CoinDesk Tests
+
+To run only the eBay tests, use the following Maven command:
+
+##bash or cmd
+mvn test -Dtest.classes=**/RunAPITests.java -Dtest.tags="--tags @Coindesk"
+
+##################################################################################
+
+
+## Run both eBay and CoinDesk Tests
+
+To run only the eBay tests, use the following Maven command:
+
+##bash or cmd
+mvn test -Dtest.classes="**/RunEbayTests.java, **/RunAPITests.java" -Dtest.tags="--tags @eBay --tags @Coindesk"
+
+##################################################################################
+
+
+## Run both eBay and CoinDesk Tests
+
+To run only the eBay tests, use the following Maven command:
+
+##bash or cmd
+mvn clean test
