@@ -1,0 +1,11 @@
+2025-01-27 01:38:48 INFO  Hooks:84 - Start Scenario: Verify the BPI values and GBP description
+2025-01-27 01:39:00 INFO  CoinDeskAPISteps:25 - Sent GET request to CoinDesk API
+2025-01-27 01:39:00 INFO  CoinDeskAPISteps:30 - Request Success and the status code is : 200
+2025-01-27 01:39:00 INFO  CoinDeskAPISteps:73 - Actual GBPs description British Pound Sterling is matching with British Pound Sterling
+2025-01-27 01:39:00 INFO  Hooks:113 - Scenario passed: Verify the BPI values and GBP description
+2025-01-27 01:39:03 INFO  Hooks:57 - Start Scenario: Search for a book and add to cart
+2025-01-27 01:39:05 INFO  EbayHomePageStepdefs:30 - entered https://www.ebay.com successfully
+2025-01-27 01:39:11 INFO  EbayHomePageStepdefs:45 - i searched for an item book
+2025-01-27 01:39:30 INFO  EbayHomePageStepdefs:65 - I Clicked on Add To Cart Button
+2025-01-27 01:39:31 INFO  EbayShoppingCartStepDefs:24 - I Cart is displaying the correct number of items that are added
+2025-01-27 01:39:31 INFO  Hooks:100 - Scenario passed: Search for a book and add to cart

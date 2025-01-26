@@ -1,0 +1,5 @@
+2025-01-27 01:12:56 INFO  Hooks:84 - Start Scenario: Verify the BPI values and GBP description
+2025-01-27 01:13:07 INFO  CoinDeskAPISteps:25 - Sent GET request to CoinDesk API
+2025-01-27 01:13:07 INFO  CoinDeskAPISteps:30 - Request Success and the status code is : 200
+2025-01-27 01:13:07 INFO  CoinDeskAPISteps:73 - Actual GBPs description British Pound Sterling is matching with British Pound Sterling
+2025-01-27 01:13:07 INFO  Hooks:113 - Scenario passed: Verify the BPI values and GBP description
