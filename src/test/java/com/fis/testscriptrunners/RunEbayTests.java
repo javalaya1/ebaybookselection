@@ -1,6 +1,6 @@
 package com.fis.testscriptrunners;
 
-//import com.fis.ebay.utils.listenersutil.RetryAnalyzer;
+import com.fis.ebay.utils.listenersutil.RetryAnalyzer;
 import com.fis.ebay.utils.listenersutil.TestListener;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 @Listeners(TestListener.class)
 public class RunEbayTests extends AbstractTestNGCucumberTests {
     //@Test(retryAnalyzer = RetryAnalyzer.class)
-    //public void runCucumberTests() {
-        // Cucumber will automatically run your feature files
-    //}
+    public void runCucumberTests() {
+        //Cucumber will automatically run your feature files
+    }
 }

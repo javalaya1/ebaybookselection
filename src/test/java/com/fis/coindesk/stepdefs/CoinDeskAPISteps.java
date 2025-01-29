@@ -20,12 +20,9 @@ public class CoinDeskAPISteps {
     @Given("I send a GET request to the CoinDesk API")
     public void sendGETRequest() {
         try {
-            System.out.println(1);
             RestAssured.baseURI = "https://api.coindesk.com";
             RequestSpecification request = RestAssured.given();
-            System.out.println(2);
             response = request.get("/v1/bpi/currentprice.json");
-            System.out.println(3);
             scenarioLogger.info("Sent GET request to CoinDesk API");
             Assert.assertEquals(response.getStatusCode(), 200);
             jsonResponse = new JSONObject(response.getBody().asString());
