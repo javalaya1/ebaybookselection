@@ -1,6 +1,7 @@
 @eBay
 Feature: Search and Add to Cart
 
+  @eBay
   Scenario: Search for a book and add to cart
     Given I open the browser and navigate to "https://www.ebay.com"
     When I search for "book"

@@ -1,25 +1,25 @@
 package com.fis.ebay.bookselection.stepdefs;
 
-import com.fis.ebay.pages.EbayBookForSalePage;
-import com.fis.ebay.pages.EbayBuyItPage;
-import com.fis.ebay.pages.EbayHomePage;
+import com.fis.ebay.bookselection.pages.EbayBookForSalePage;
+import com.fis.ebay.bookselection.pages.EbayBuyItPage;
+import com.fis.ebay.bookselection.pages.EbayHomePage;
+import com.fis.ebay.utils.logutil.LoggerUtility;
 import com.fis.ebay.utils.reportsutil.ExtentReportUtil;
-import com.fis.ebay.utils.reportsutil.LogUtil;
+import com.fis.hooks.BaseStepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-public class EbayHomePageStepdefs {
+public class EbayHomePageStepdefs{
 
-    private WebDriver driver = Hooks.getDriver();
-    private EbayHomePage ebayHomePage = new EbayHomePage(driver);
-    private EbayBookForSalePage ebaybookForSale = new EbayBookForSalePage(driver);
-    private EbayBuyItPage ebayBuyItPage = new EbayBuyItPage(driver);
-    private static final Logger logger = LogUtil.getLogger(EbayHomePageStepdefs.class, "log4j2-ebay.xml");
-
+    private final WebDriver driver = BaseStepDefinitions.getDriver();
+    private final EbayHomePage ebayHomePage = new EbayHomePage(driver);
+    private final EbayBookForSalePage ebaybookForSale = new EbayBookForSalePage(driver);
+    private final EbayBuyItPage ebayBuyItPage = new EbayBuyItPage(driver);
+   // private static final Logger logger = LogUtil.getLogger(EbayHomePageStepdefs.class, "log4j2-ebay.xml");
+   private final Logger scenarioLogger = LoggerUtility.getLogger();
 
     @Given("I open the browser and navigate to {string}")
     public void iOpenTheBrowserAndNavigateTo(String url) {
@@ -27,11 +27,11 @@ public class EbayHomePageStepdefs {
             driver.get(url);
             ExtentReportUtil.getTest().
                     pass("entered " + url + " successfully");
-            logger.info("entered " + url + " successfully");
+            scenarioLogger.info("entered {} successfully", url);
         } catch (Throwable t) {
             ExtentReportUtil.getTest().
                     fail("Failed to enter " + url);
-            logger.error("Failed to enter " + url);
+            scenarioLogger.error("Failed to enter {}", url);
             throw t;
         }
     }
@@ -42,11 +42,11 @@ public class EbayHomePageStepdefs {
             ebayHomePage.searchForItem(itemName);
             ExtentReportUtil.getTest().
                     pass("I Searched for an Item : " + itemName);
-            logger.info("i searched for an item " + itemName);
+            scenarioLogger.info("i searched for an item {}", itemName);
         } catch (Throwable t) {
             ExtentReportUtil.getTest().
                     fail("I Searched for an Item : " + itemName);
-            logger.error("i searched for an item " + itemName);
+            scenarioLogger.error("i searched for an item {}", itemName);
             throw t;
         }
 
@@ -62,11 +62,11 @@ public class EbayHomePageStepdefs {
             ExtentReportUtil.getTest().
                     pass("I Clicked on Add To Cart Button");
 
-            logger.info("I Clicked on Add To Cart Button");
+            scenarioLogger.info("I Clicked on Add To Cart Button");
         } catch (Throwable t) {
             ExtentReportUtil.getTest().
                     fail("Failed to Click on Add To Cart Button");
-            logger.error("Failed to Click on Add To Cart Button");
+            scenarioLogger.error("Failed to Click on Add To Cart Button");
             throw t;
         }
     }
@@ -78,10 +78,11 @@ public class EbayHomePageStepdefs {
             bookName = ebaybookForSale.clickOnItem(itemNumber);
             ExtentReportUtil.getTest().
                     pass("I clicked on " + bookName);
+            scenarioLogger.info("I clicked on {}", bookName);
         } catch (Throwable t) {
             ExtentReportUtil.getTest().
                     fail("Failed to Click on " + bookName);
-            logger.error("Failed to Click on " + bookName);
+            scenarioLogger.error("Failed to Click on {}", bookName);
             throw t;
         }
     }

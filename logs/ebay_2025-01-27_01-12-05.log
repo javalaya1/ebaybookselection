@@ -1,6 +1,0 @@
-2025-01-27 01:12:08 INFO  Hooks:57 - Start Scenario: Search for a book and add to cart
-2025-01-27 01:12:09 INFO  EbayHomePageStepdefs:30 - entered https://www.ebay.com successfully
-2025-01-27 01:12:15 INFO  EbayHomePageStepdefs:45 - i searched for an item book
-2025-01-27 01:12:24 INFO  EbayHomePageStepdefs:65 - I Clicked on Add To Cart Button
-2025-01-27 01:12:24 INFO  EbayShoppingCartStepDefs:24 - I Cart is displaying the correct number of items that are added
-2025-01-27 01:12:24 INFO  Hooks:100 - Scenario passed: Search for a book and add to cart
