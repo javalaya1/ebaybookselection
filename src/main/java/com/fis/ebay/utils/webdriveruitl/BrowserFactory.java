@@ -56,5 +56,21 @@ public class BrowserFactory {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
         return driver;
     }
+	
+	public static WebDriver getDriver(){
+
+        return driver;
+    }
+
+    public static void closeCurrentBrowser(){
+        if(driver!=null){
+            driver.close();
+        }
+    }
+
+    public static void quitBrowser(){
+        if(driver!=null)
+            driver.quit();
+    }
 
 }

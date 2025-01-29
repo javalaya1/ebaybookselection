@@ -12,8 +12,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <test.classes>**/RunEbayTests.java,**/RunAPITests.java</test.classes> <!-- Default value -->
-        <test.tags>--tags @eBay</test.tags> <!-- Default value -->
     </properties>
 
     <dependencies>
@@ -107,11 +105,12 @@
                     <!--&lt;!&ndash;                        <cucumber.options>&#45;&#45;tags @Coindesk</cucumber.options>&ndash;&gt;-->
                     <!--                    </systemPropertyVariables> -->
                     <includes>
-                        <include>${test.classes}</include>
+                        <include>**/RunEbayTests.java</include>
+                        <include>**/RunAPITests.java</include>
                     </includes>
-                    <systemPropertyVariables>
+                  <!--   <systemPropertyVariables>
                         <cucumber.options>${test.tags}</cucumber.options>
-                    </systemPropertyVariables>
+                    </systemPropertyVariables> -->
                 </configuration>
             </plugin>
         </plugins>

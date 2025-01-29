@@ -4,23 +4,18 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import com.fis.ebay.utils.webdriveruitl.BrowserFactory;
 
 public class TestListener implements ITestListener {
 
-    private WebDriver driver;
+	WebDriver driver = BrowserFactory.getDriver();
 
     @Override
     public void onTestFailure(ITestResult result) {
         // Initialize WebDriver (you might have a different WebDriver initialization setup)
-        if (driver == null) {
-            driver = new ChromeDriver();
+        if (driver != null) {
+			ScreenshotUtils.takeScreenshot(driver, result.getName());
         }
-
-        // Take screenshot if test fails
-        ScreenshotUtils.takeScreenshot(driver, result.getName());
-
-        // Close the browser after the test
-        driver.quit();
     }
 
     // You can implement other ITestListener methods as needed, such as onTestStart, onTestSuccess, etc.

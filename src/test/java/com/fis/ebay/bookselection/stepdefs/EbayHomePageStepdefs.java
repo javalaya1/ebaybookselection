@@ -3,28 +3,39 @@ package com.fis.ebay.bookselection.stepdefs;
 import com.fis.ebay.bookselection.pages.EbayBookForSalePage;
 import com.fis.ebay.bookselection.pages.EbayBuyItPage;
 import com.fis.ebay.bookselection.pages.EbayHomePage;
+import com.fis.ebay.bookselection.pages.EbayShoppingCartPage;
 import com.fis.ebay.utils.logutil.LoggerUtility;
 import com.fis.ebay.utils.reportsutil.ExtentReportUtil;
+import com.fis.ebay.utils.webdriveruitl.BrowserFactory;
 import com.fis.hooks.BaseStepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import com.fis.ebay.utils.webdriveruitl.BrowserFactory;
 
-public class EbayHomePageStepdefs{
+public class EbayHomePageStepdefs {
 
-    private final WebDriver driver = BaseStepDefinitions.getDriver();
-    private final EbayHomePage ebayHomePage = new EbayHomePage(driver);
-    private final EbayBookForSalePage ebaybookForSale = new EbayBookForSalePage(driver);
-    private final EbayBuyItPage ebayBuyItPage = new EbayBuyItPage(driver);
-   // private static final Logger logger = LogUtil.getLogger(EbayHomePageStepdefs.class, "log4j2-ebay.xml");
-   private final Logger scenarioLogger = LoggerUtility.getLogger();
+private final WebDriver driver = BrowserFactory.getDriver();
+					private final EbayHomePage ebayHomePage = new EbayHomePage(driver);
+					private final EbayBookForSalePage ebaybookForSale = new EbayBookForSalePage(driver);
+					private final EbayBuyItPage ebayBuyItPage = new EbayBuyItPage(driver);
+					// private static final Logger logger = LogUtil.getLogger(EbayHomePageStepdefs.class, "log4j2-ebay.xml");
+					private final Logger scenarioLogger = LoggerUtility.getLogger();
 
     @Given("I open the browser and navigate to {string}")
     public void iOpenTheBrowserAndNavigateTo(String url) {
         try {
-            driver.get(url);
+            //if (BrowserFactory.getDriver() != null) {
+               
+				
+				    
+
+					BrowserFactory.getDriver().get(url);
+            //}
             ExtentReportUtil.getTest().
                     pass("entered " + url + " successfully");
             scenarioLogger.info("entered {} successfully", url);
@@ -45,7 +56,7 @@ public class EbayHomePageStepdefs{
             scenarioLogger.info("i searched for an item {}", itemName);
         } catch (Throwable t) {
             ExtentReportUtil.getTest().
-                    fail("I Searched for an Item : " + itemName);
+                    fail("Failed to search for an Item : " + itemName);
             scenarioLogger.error("i searched for an item {}", itemName);
             throw t;
         }
@@ -86,4 +97,6 @@ public class EbayHomePageStepdefs{
             throw t;
         }
     }
+
+    
 }
