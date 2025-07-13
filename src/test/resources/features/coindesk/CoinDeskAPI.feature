@@ -7,7 +7,7 @@ Feature: Verify CoinDesk API response
     Then the response should contain the BPIs USD, GBP, and EUR
     And the GBP description should be "British Pound Sterling.
     And close the browser.
-		And only then close the browser.
+    And only then close the browser.
 
   @abc
   Scenario: Verify the BPI values and GBP description2
