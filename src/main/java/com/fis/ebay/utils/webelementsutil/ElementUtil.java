@@ -19,6 +19,7 @@ public class ElementUtil {
     public ElementUtil(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+                this.wait.withTimeout(Duration.ofSeconds(10));
     }
 
     // Method to wait for element to be visible

@@ -1,4 +1,4 @@
-@eBay
+@regression
 Feature: Search and Add to Cart
 
   @eBay

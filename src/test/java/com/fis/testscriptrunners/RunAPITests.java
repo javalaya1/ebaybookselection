@@ -8,15 +8,15 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @CucumberOptions(
-        features = "./src/test/resources/coindesk.features",
+        features = "./src/test/resources/features/coindesk",
         glue = {"com.fis.coindesk.stepdefs","com.fis.hooks"},
         plugin = {"pretty", "html:target/cucumber-coindesk-reports.html"},
         monochrome = true,
-        tags = "@Coindesk"
+        tags = ""
 )
 public class RunAPITests extends AbstractTestNGCucumberTests {
-	//@Test(retryAnalyzer = RetryAnalyzer.class)
-    public void runCucumberTests() {
-        //Cucumber will automatically run your feature files
-    }
+//	//@Test(retryAnalyzer = RetryAnalyzer.class)
+//    public void runCucumberTests() {
+//        //Cucumber will automatically run your feature files
+//    }
 }

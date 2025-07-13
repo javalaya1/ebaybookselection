@@ -72,7 +72,7 @@ public class BaseStepDefinitions {
         }
     }
 
-    @Before("@Coindesk")
+    @Before("@abc or @Coindesk")
     public void setUpCoindesk(Scenario scenario) {
         // Similar setup logic for Coindesk
         LoggerUtility.initializeLogger(scenario);
@@ -83,7 +83,7 @@ public class BaseStepDefinitions {
         scenarioLogger.info("Start Scenario: {}", scenario.getName());
     }
 
-    @After("@Coindesk")
+    @After("@Coindesk or @abc")
     public void tearDownCoinDesk(Scenario scenario) {
         if (scenario.isFailed()) {
             scenarioLogger.error("Scenario failed: {}", scenario.getName());

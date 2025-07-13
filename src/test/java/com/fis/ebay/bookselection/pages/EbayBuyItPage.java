@@ -22,5 +22,4 @@ public class EbayBuyItPage extends EbayBasePage{
         elementUtil.clickElement(addToCartButtonLocator);
     }
 
-
 }

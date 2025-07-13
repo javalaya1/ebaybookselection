@@ -1,4 +1,4 @@
-package com.fis.ebay.utils.mousekeyboardactions;
+package com.fis.ebay.utils.webelementsutil;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +33,10 @@ public class ActionsUtil {
 
     public void hoverOverElement(By locator) {
         WebElement element = driver.findElement(locator);
+        actions.moveToElement(element).perform();
+    }
+
+    public void hoverOverElement(WebElement element) {
         actions.moveToElement(element).perform();
     }
 

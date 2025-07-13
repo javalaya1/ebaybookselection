@@ -24,8 +24,10 @@ public class CoinDeskAPISteps {
             RequestSpecification request = RestAssured.given();
             response = request.get("/v1/bpi/currentprice.json");
             scenarioLogger.info("Sent GET request to CoinDesk API");
-            Assert.assertEquals(response.getStatusCode(), 200);
-            jsonResponse = new JSONObject(response.getBody().asString());
+//            Assert.assertEquals(response.getStatusCode(), 200);
+//            jsonResponse = new JSONObject(response.getBody().asString());
+            //or
+            jsonResponse = new JSONObject(response.then().statusCode(200).extract().response().getBody().asString());
             ExtentReportUtil.getTest().
                     pass("Request Success and the status code is : " + response.getStatusCode());
             scenarioLogger.info("Request Success and the status code is : {}", response.getStatusCode());
@@ -39,6 +41,71 @@ public class CoinDeskAPISteps {
 
     @Then("the response should contain the BPIs USD, GBP, and EUR")
     public void verifyBPIs() {
+        String validationBPI_Text = null;
+        try {
+            JSONObject bpi = jsonResponse.getJSONObject("bpi");
+            validationBPI_Text = "USD";
+
+            Assert.assertTrue(bpi.has("USD"));
+            ExtentReportUtil.getTest().pass("BPIs has " + validationBPI_Text);
+            validationBPI_Text = "GBP";
+            Assert.assertTrue(bpi.has("GBP"));
+            ExtentReportUtil.getTest().pass("BPIs has " + validationBPI_Text);
+            validationBPI_Text = "EUR";
+            Assert.assertTrue(bpi.has("EUR"));
+            ExtentReportUtil.getTest().pass("BPIs has " + validationBPI_Text);
+        } catch (Throwable t) {
+            ExtentReportUtil.getTest().
+                    fail("BPIs does not contain " + validationBPI_Text);
+            scenarioLogger.error("BPIs does not contain " + validationBPI_Text);
+            throw t;
+        }
+    }
+
+    @Then("the GBP description should be {string}")
+    public void verifyGBPDescription(String expectedDescription) {
+        String actualDescription = null;
+        try {
+            JSONObject bpi = jsonResponse.getJSONObject("bpi");
+            JSONObject gbp = bpi.getJSONObject("GBP");
+            actualDescription = gbp.getString("description");
+
+            Assert.assertEquals(actualDescription, expectedDescription);
+            ExtentReportUtil.getTest().
+                    pass("Actual GBPs description " + actualDescription + " is matching with " + expectedDescription);
+            scenarioLogger.info("Actual GBPs description {} is matching with {}", actualDescription, expectedDescription);
+
+        } catch (Throwable t) {
+            ExtentReportUtil.getTest().
+                    fail("GBPs description is not matching " + actualDescription + " found but required : " + expectedDescription);
+            scenarioLogger.error("GBPs description is not matching {} found but required : {}", actualDescription, expectedDescription);
+            throw t;
+        }
+    }
+
+
+    @Given("I send a GET request to the CoinDesk API2")
+    public void sendGETRequest2() {
+        try {
+            RestAssured.baseURI = "https://api.coindesk.com";
+            RequestSpecification request = RestAssured.given();
+            response = request.get("/v1/bpi/currentprice.json");
+            scenarioLogger.info("Sent GET request to CoinDesk API");
+            Assert.assertEquals(response.getStatusCode(), 200);
+            jsonResponse = new JSONObject(response.getBody().asString());
+            ExtentReportUtil.getTest().
+                    pass("Request Success and the status code is : " + response.getStatusCode());
+            scenarioLogger.info("Request Success and the status code is : {}", response.getStatusCode());
+        } catch (Throwable t) {
+            ExtentReportUtil.getTest().
+                    fail("Request failed and the status code is : " + response.getStatusCode());
+            scenarioLogger.error("Request failed and the status code is : {}", response.getStatusCode());
+            throw t;
+        }
+    }
+
+    @Then("the response should contain the BPIs USD, GBP, and EUR2")
+    public void verifyBPIs2() {
         String validationBPI_Text = null;
         try {
             JSONObject bpi = jsonResponse.getJSONObject("bpi");
@@ -59,8 +126,8 @@ public class CoinDeskAPISteps {
         }
     }
 
-    @Then("the GBP description should be {string}")
-    public void verifyGBPDescription(String expectedDescription) {
+    @Then("the GBP description should be2 {string}")
+    public void verifyGBPDescription2(String expectedDescription) {
         String actualDescription = null;
         try {
             JSONObject bpi = jsonResponse.getJSONObject("bpi");

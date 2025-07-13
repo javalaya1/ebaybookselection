@@ -32,6 +32,8 @@ To run only the eBay tests, use the following Maven command:
 
 ##bash or cmd
 mvn clean test -Dtest=RunAPITests
+mvn clean test -Dtest=RunAPITests -Dcucumber.filter.tags=@abc
+mvn clean test -Dtest=RunAPITests -Dcucumber.filter.tags=@Coindesk
 
 ##################################################################################
 

@@ -13,10 +13,10 @@ public class BrowserFactory {
 
     public synchronized static WebDriver getDriver(String browser, String profilePath, boolean isHeadless, boolean useGrid) throws MalformedURLException {
 
-        if(driver == null){
-            synchronized (BrowserFactory.class){
-                if(driver==null){
-                    initializeDriver(browser,profilePath,isHeadless,useGrid);
+        if (driver == null) {
+            synchronized (BrowserFactory.class) {
+                if (driver == null) {
+                    initializeDriver(browser, profilePath, isHeadless, useGrid);
                 }
             }
         }
@@ -29,20 +29,19 @@ public class BrowserFactory {
         URL hub = null;
 
         switch (browser.toLowerCase()) {
-            case "chrome":
+            case "chrome" -> {
                 browserSetup = new ChromeDriverSetup();
-                remoteBrowserSetup = new ChromeDriverSetup();
-                break;
-            case "firefox":
+                remoteBrowserSetup =  new ChromeDriverSetup();
+            }
+            case "firefox" -> {
                 browserSetup = new FirefoxDriverSetup();
-                remoteBrowserSetup = new FirefoxDriverSetup();
-                break;
-            case "edge":
+                remoteBrowserSetup =  new FirefoxDriverSetup();
+            }
+            case "edge" -> {
                 browserSetup = new EdgeDriverSetup();
-                remoteBrowserSetup = new EdgeDriverSetup();
-                break;
-            default:
-                throw new IllegalArgumentException("Unsupported browser: " + browser);
+                remoteBrowserSetup =  new EdgeDriverSetup();
+            }
+            default -> throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
 
         if (useGrid) {
@@ -53,23 +52,23 @@ public class BrowserFactory {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(1000));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(100));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         return driver;
     }
-	
-	public static WebDriver getDriver(){
+
+    public static WebDriver getDriver() {
 
         return driver;
     }
 
-    public static void closeCurrentBrowser(){
-        if(driver!=null){
+    public static void closeCurrentBrowser() {
+        if (driver != null) {
             driver.close();
         }
     }
 
-    public static void quitBrowser(){
-        if(driver!=null)
+    public static void quitBrowser() {
+        if (driver != null)
             driver.quit();
     }
 
