@@ -23,6 +23,7 @@ public class RunEbayTests extends AbstractTestNGCucumberTests {
     public void runCucumberTests() {
         //Cucumber will automatically run your feature files
 				String s = "Hello";
+				StringBuffer sb  = new StringBuffer("World");
     }
 }
 
