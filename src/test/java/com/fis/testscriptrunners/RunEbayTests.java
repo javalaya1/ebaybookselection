@@ -22,7 +22,6 @@ public class RunEbayTests extends AbstractTestNGCucumberTests {
     //@Test(retryAnalyzer = RetryAnalyzer.class)
     public void runCucumberTests() {
         //Cucumber will automatically run your feature files
-				String s = "Hello";
     }
 }
 
