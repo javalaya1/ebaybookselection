@@ -13,9 +13,17 @@ import org.testng.annotations.Listeners;
 )
 @Listeners(TestListener.class)
 public class RunEbayTests extends AbstractTestNGCucumberTests {
+		
+		//JIRA - 102
+		public void m2(){
+				//Logic
+		}
+		
     //@Test(retryAnalyzer = RetryAnalyzer.class)
     public void runCucumberTests() {
         //Cucumber will automatically run your feature files
+				String s = "Hello";
+				StringBuffer sb  = new StringBuffer("World");
     }
 }
 
